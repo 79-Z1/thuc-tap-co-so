@@ -16,17 +16,19 @@
 </head>
 
 <body>
-	<p class="header mt-3">THỰC TẬP CƠ SỞ</p>
+	<h1 class="header mt-3">THỰC TẬP CƠ SỞ</h1>
+	<p class="text-center h4">ĐỀ TÀI 2. CÀI ĐẶT VÀ MÔ PHỎNG CÁC THAO TÁC ĐỐI VỚI CẤU TRÚC DỮ LIỆU DANH SÁCH SỬ DỤNG MẢNG</p>
+	<hr>
 	<div class="m-5 ">
 		<form class="row g-3 justify-content-between">
 			<div class="row justify-content-center">
 				<div class="col-2">
-					<label class="ms-3" for="value"> Giá trị </label>
-					<input type="number" class="form-control" id="value" placeholder="Giá trị">
-				</div>
-				<div class="col-2">
 					<label class="ms-3" for="index"> Vị trí </label>
 					<input type="number" class="form-control" id="index" placeholder="Vị trí">
+				</div>
+				<div class="col-2">
+					<label class="ms-3" for="value"> Giá trị </label>
+					<input type="number" class="form-control" id="value" placeholder="Giá trị">
 				</div>
 				<div class="col-4">
 					<label class="ms-3" for="auto"> Số lượng </label>
@@ -45,8 +47,11 @@
 				<button class="btn btn-success me-5 w-25" id="delete-btn">Xóa</button>
 				<button class="btn btn-success me-5 w-25" id="search-btn">Tìm kiếm</button>
 				<button class="btn btn-success me-5 w-25" id="sort-btn">Sắp xếp</button>
+				<button class="btn btn-success me-5 w-25" id="max-btn">Lớn nhất</button>
+				<button class="btn btn-success me-5 w-25" id="min-btn">Nhỏ nhất</button>
 			</div>
 		</form>
+		<div class="notice h4"></div>
 		<div id="array"></div>
 	</div>
 </body>
