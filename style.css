@@ -4,6 +4,18 @@
 	box-sizing: border-box !important;
 }
 
+#zz {
+	position: relative;
+	color: black;
+}
+
+#zz p {
+	position: absolute;
+	width: 38px;
+	text-align: center;
+}
+
+
 .header {
 	text-align: center;
 }
@@ -14,7 +26,7 @@ body {
 
 #array {
 	background-color: white;
-	min-height: 435px;
+	min-height: 420px;
 	min-width: 600px;
 	position: relative;
 	margin-top: 40px;
@@ -41,14 +53,14 @@ body {
 	text-align: center;
 }
 
-.block p {
+/* .block p {
 	position: absolute;
 	color: black;
 	bottom: 0;
 	margin-bottom: -20px;
 	width: 100%;
 	text-align: center;
-}
+} */
 
 .notice {
 	color: #fff;

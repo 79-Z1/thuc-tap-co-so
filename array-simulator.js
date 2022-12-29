@@ -14,7 +14,7 @@ async function generatearray(length) {
         </div>
         `
         numbers = [...numbers, value];
-        await delay(300);
+        await delay(200);
         $('#array').append(div);
     }
     $('.notice').text(`Đã tạo xong mảng !!!`);
@@ -41,7 +41,7 @@ async function addNumber(value) {
     $('#array').append(div);
     await delay(300);
     $(".block:last-child").css({ "background-color": "#6b5b95" });
-} 
+}
 
 //# CHÈN 
 async function insertNumber(index, value) {
@@ -60,12 +60,12 @@ async function insertNumber(index, value) {
         numbers[i] = numbers[i - 1];
         blocks[i - 1].style.backgroundColor = "#6b5b95";
     }
+    // Chen value tai index
+    numbers[index] = value;
+
     addToDom(value, position);
     $('.notice').text(`Đã chèn thành công số ${value} vào vị trí số ${index}`);
     $('.notice').addClass('animation');
-
-    // Chen value tai index
-    numbers[index] = value;
     blocks = Array.from(document.querySelectorAll(".block"));
 }
 
@@ -97,9 +97,10 @@ async function editNumber(index, value) {
 //# XÓA THEO VỊ TRÍ 
 function deleteNumberByIndex(index) {
     return new Promise(async (resolve) => {
+        let length = numbers.length;  
         blocks = document.querySelectorAll(".block");
 
-        if (numbers.length <= 0) {
+        if (length <= 0) {
             $('.notice').text(`Mảng của bạn đang rỗng!!!`);
             $('.notice').addClass('animation');
             return;
@@ -107,7 +108,7 @@ function deleteNumberByIndex(index) {
 
         await remove(blocks[index]);
         /* Dịch phần tử về đầu mảng từ vị trí xóa */
-        for (let i = index; i < numbers.length - 1; i++) {
+        for (let i = index; i <= length - 2; i++) {
             numbers[i] = numbers[i + 1];
             blocks[i + 1].style.backgroundColor = "#FF4949";
             await backPosition(blocks[i + 1]);
@@ -123,12 +124,10 @@ function deleteNumberByIndex(index) {
 
 //# XÓA THEO GIÁ TRỊ
 async function deleteNumberByValue(value) {
+    let length = numbers.length;  
     blocks = document.querySelectorAll(".block");
-    if (numbers.length <= 0) {
-        return;
-    }
 
-    for (let i = 0; i < numbers.length; i++) {
+    for (let i = 0; i < length; i++) {
         blocks[i].style.backgroundColor = "#FF4949";
         await delay(300);
         if (numbers[i] === value) {
@@ -186,10 +185,11 @@ async function BubbleSort(delay = 100) {
 //# TÌM KIẾM
 async function searchNumber(value) {
     blocks = document.querySelectorAll(".block");
+    let length = numbers.length;
     let indexList = [];
     let count = 0;
 
-    for (var i = 0; i < numbers.length; i++) {
+    for (let i = 0; i < length; i++) {
         blocks[i].style.backgroundColor = "#FF4949";
         await delay(300);
         if (numbers[i] === value) {
@@ -207,52 +207,64 @@ async function searchNumber(value) {
 //# LỚN NHẤT
 async function maxNumber() {
     blocks = document.querySelectorAll(".block");
+    let length = numbers.length;
     let max = numbers[0];
+    let maxIndex = 0;
+
     blocks[0].style.backgroundColor = "#13CE66";
     $('.notice').text(`Phần tử lớn nhất tạm thời là: ${max}`);
-    $('.notice').addClass('animation'); 
+    $('.notice').addClass('animation');
 
-    for (var i = 1; i < numbers.length; i++) {
+    for (let i = 1; i < length; i++) {
         blocks[i].style.backgroundColor = "#FF4949";
         await delay(300);
         if (max < numbers[i]) {
             max = numbers[i];
+            maxIndex = i;
+
             blocks[0].style.backgroundColor = "#6b5b95"
             blocks[i].style.backgroundColor = "#13CE66";
             $('.notice').text(`Phần tử lớn nhất tạm thời là: ${max}`);
-            $('.notice').addClass('animation'); 
+            $('.notice').addClass('animation');
             await delay(1000);
         }
         blocks[i].style.backgroundColor = "#6b5b95";
     }
+    blocks[maxIndex].style.backgroundColor = "#13CE66";
     $('.notice').text(`Đã xong - Phần tử lớn nhất là: ${max}`);
-    $('.notice').addClass('animation'); 
-} 
+    $('.notice').addClass('animation');
+}
 
 //# NHỎ NHẤT
 async function minNumber() {
     blocks = document.querySelectorAll(".block");
+    let length = numbers.length;
     let min = numbers[0];
+    let minIndex = 0;
+
     blocks[0].style.backgroundColor = "#13CE66";
     $('.notice').text(`Phần tử nhỏ nhất tạm thời là: ${min}`);
-    $('.notice').addClass('animation'); 
+    $('.notice').addClass('animation');
 
-    for (var i = 1; i < numbers.length; i++) {
+    for (let i = 1; i < length; i++) {
         blocks[i].style.backgroundColor = "#FF4949";
         await delay(300);
         if (min > numbers[i]) {
             min = numbers[i];
+            minIndex = i;
+
             blocks[0].style.backgroundColor = "#6b5b95"
             blocks[i].style.backgroundColor = "#13CE66";
             $('.notice').text(`Phần tử nhỏ nhất tạm thời là: ${min}`);
-            $('.notice').addClass('animation'); 
+            $('.notice').addClass('animation');
             await delay(1000);
         }
         blocks[i].style.backgroundColor = "#6b5b95";
     }
+    blocks[minIndex].style.backgroundColor = "#13CE66";
     $('.notice').text(`Đã xong - Phần tử nhỏ nhất là: ${min}`);
-    $('.notice').addClass('animation'); 
-} 
+    $('.notice').addClass('animation');
+}
 
 async function addToDom(value, position = 0) {
     let div = `
@@ -342,7 +354,7 @@ $('#add-btn').on('click', function (e) {
     e.preventDefault();
     let value = Number($('#value').val());
 
-    if(value > 100 || value <= 0) {
+    if (value > 100 || value <= 0) {
         $('.notice').text(`Giá trị không được bé hơn 1 hoặc lớn hơn 100!!!`);
         $('.notice').addClass('animation');
         $('#value').focus();
@@ -366,7 +378,7 @@ $('#insert-btn').on('click', function (e) {
     if (index >= numbers.length) {
         alert(`Không thể thêm vào vị trí này!!!\n*** Phải < ${numbers.length} ***`)
     }
-    
+
     insertNumber(index, value);
 
     $('#value').val(null);
@@ -378,7 +390,7 @@ $('#edit-btn').on('click', function (e) {
     let value = Number($('#value').val());
     let index = Number($('#index').val());
 
-    if (index > numbers.length-1 || index < 0) {
+    if (index > numbers.length - 1 || index < 0) {
         $('.notice').text(`Vị trí phải >= 0 <= ${numbers.length - 1}`);
         $('.notice').addClass('animation');
         $('#index').focus();
@@ -434,12 +446,12 @@ $('#search-btn').on('click', function (e) {
     $('#value').val(null);
 });
 
-$('#min-btn').on('click', function(e) {
+$('#min-btn').on('click', function (e) {
     e.preventDefault();
     minNumber();
 });
 
-$('#max-btn').on('click', function(e) {
+$('#max-btn').on('click', function (e) {
     e.preventDefault();
     maxNumber();
 })
