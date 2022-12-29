@@ -134,6 +134,8 @@ async function deleteNumberByValue(value) {
             $('.notice').text(`Đã tìm thấy phần tử có giá trị ${value}`);
             $('.notice').addClass('animation');
             await deleteNumberByIndex(i);
+            $('.notice').text(`Đã xóa thành công phần tử có giá trị ${value} !!!`);
+            $('.notice').addClass('animation');
             return;
         }
         blocks[i].style.backgroundColor = "#6b5b95";
@@ -352,6 +354,7 @@ function whichtInputIsEmpty() {
 
 $('#add-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     let value = Number($('#value').val());
 
     if (value > 100 || value <= 0) {
@@ -372,6 +375,7 @@ $('#add-btn').on('click', function (e) {
 
 $('#insert-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     let value = Number($('#value').val());
     let index = Number($('#index').val());
 
@@ -387,6 +391,7 @@ $('#insert-btn').on('click', function (e) {
 
 $('#edit-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     let value = Number($('#value').val());
     let index = Number($('#index').val());
 
@@ -418,6 +423,8 @@ $('#delete-btn').on('click', async function (e) {
         deleteNumberByValue(value);
     } else {
         deleteNumberByIndex(index);
+        $('.notice').text(`Xóa thành công phần tại vị trí số ${index}`);
+        $('.notice').addClass('animation');
     }
 
     $('#value').val(null);
@@ -426,6 +433,7 @@ $('#delete-btn').on('click', async function (e) {
 
 $('#auto-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     const length = Number($('#auto').val());
 
     container.innerHTML = '';
@@ -435,11 +443,13 @@ $('#auto-btn').on('click', function (e) {
 
 $('#sort-btn').on('click', async function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     BubbleSort();
 })
 
 $('#search-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     let value = Number($('#value').val());
 
     searchNumber(value);
@@ -448,11 +458,13 @@ $('#search-btn').on('click', function (e) {
 
 $('#min-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     minNumber();
 });
 
 $('#max-btn').on('click', function (e) {
     e.preventDefault();
+    $('.notice').removeClass('animation');
     maxNumber();
 })
 
