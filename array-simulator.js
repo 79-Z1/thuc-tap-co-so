@@ -178,7 +178,6 @@ async function BubbleSort(delay = 100) {
 
         // đổi màu phần tử có giá trị lớn nhất
         blocks[blocks.length - i - 1].style.backgroundColor = "#13CE66";
-        window.localStorage.setItem("data", JSON.stringify(numbers));
     }
     $('.notice').text(`Đã sắp xếp xong !!!`);
     $('.notice').addClass('animation');
@@ -203,6 +202,10 @@ async function searchNumber(value) {
             $('.notice').addClass('animation');
         }
         blocks[i].style.backgroundColor = "#6b5b95";
+    }
+
+    for (let i = 0; i < indexList.length; i++) {
+        blocks[indexList[i]].style.backgroundColor = "#13CE66";
     }
 }
 

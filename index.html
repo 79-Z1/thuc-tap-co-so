@@ -1,137 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Document</title>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!--@ bootstrap -->
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-		/>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!--@ jquery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-		<script defer type="module" src="array-simulator.js"></script>
-		<link rel="stylesheet" href="style.css" />
-	</head>
 
-	<body>
-		<h1 class="header mt-3">THỰC TẬP CƠ SỞ</h1>
-		<p class="text-center h4">
-			ĐỀ TÀI 2. CÀI ĐẶT VÀ MÔ PHỎNG CÁC THAO TÁC ĐỐI VỚI CẤU TRÚC DỮ LIỆU
-			DANH SÁCH SỬ DỤNG MẢNG
-		</p>
-		<hr />
-		<div class="m-5">
-			<form class="row g-3 justify-content-between">
-				<div class="row justify-content-center">
-					<div class="col-2">
-						<label class="ms-3" for="index"> Vị trí </label>
-						<input
-							type="number"
-							class="form-control"
-							id="index"
-							placeholder="Vị trí"
-						/>
-					</div>
-					<div class="col-2">
-						<label class="ms-3" for="value"> Giá trị </label>
-						<input
-							type="number"
-							class="form-control"
-							id="value"
-							placeholder="Giá trị"
-						/>
-					</div>
-					<div class="col-4">
-						<label class="ms-3" for="auto"> Số lượng </label>
-						<div class="d-flex" style="height: 33px">
-							<input
-								class="form-control me-2 w-50"
-								id="auto"
-								type="number"
-								placeholder="Số lượng..."
-							/>
-							<button class="btn btn-success" id="auto-btn">
-								Tạo mảng
-							</button>
-							<button
-								class="btn btn-success ms-2"
-								id="refresh-btn"
-							>
-								Làm mới
-							</button>
-						</div>
+<head>
+	<title>Document</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--@ bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!--@ jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script defer type="module" src="array-simulator.js"></script>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<h1 class="header mt-3">THỰC TẬP CƠ SỞ</h1>
+	<p class="text-center h4">
+		ĐỀ TÀI 2. CÀI ĐẶT VÀ MÔ PHỎNG CÁC THAO TÁC ĐỐI VỚI CẤU TRÚC DỮ LIỆU
+		DANH SÁCH SỬ DỤNG MẢNG
+	</p>
+	<hr />
+	<div class="m-5">
+		<form class="row g-3 justify-content-between">
+			<div class="row justify-content-center">
+				<div class="col-2">
+					<label class="ms-3" for="index"> Vị trí </label>
+					<input type="number" class="form-control" id="index" placeholder="Vị trí" />
+				</div>
+				<div class="col-2">
+					<label class="ms-3" for="value"> Giá trị </label>
+					<input type="number" class="form-control" id="value" placeholder="Giá trị" />
+				</div>
+				<div class="col-4">
+					<label class="ms-3" for="auto"> Số lượng </label>
+					<div class="d-flex" style="height: 33px">
+						<input class="form-control me-2 w-50" id="auto" type="number" placeholder="Số lượng..." />
+						<button class="btn btn-success" id="auto-btn">
+							Tạo mảng
+						</button>
+						<button class="btn btn-success ms-2" id="refresh-btn">
+							Làm mới
+						</button>
 					</div>
 				</div>
-
-				<div class="d-flex justify-content-center">
-					<button class="btn btn-success me-5 w-25" id="add-btn">
-						Thêm
-					</button>
-					<button class="btn btn-success me-5 w-25" id="insert-btn">
-						Chèn
-					</button>
-					<button class="btn btn-success me-5 w-25" id="edit-btn">
-						Sửa
-					</button>
-					<button class="btn btn-success me-5 w-25" id="delete-btn">
-						Xóa
-					</button>
-					<button class="btn btn-success me-5 w-25" id="search-btn">
-						Tìm kiếm
-					</button>
-					<button class="btn btn-success me-5 w-25" id="sort-btn">
-						Sắp xếp
-					</button>
-					<button class="btn btn-success me-5 w-25" id="max-btn">
-						Lớn nhất
-					</button>
-					<button class="btn btn-success me-5 w-25" id="min-btn">
-						Nhỏ nhất
-					</button>
-				</div>
-			</form>
-			<div class="notice h4"></div>
-			<div id="array"></div>
-			<div id="zz">
-				<p style="transform: translate(0px)">0</p>
-				<p style="transform: translate(40px)">1</p>
-				<p style="transform: translate(80px)">2</p>
-				<p style="transform: translate(120px)">3</p>
-				<p style="transform: translate(160px)">4</p>
-				<p style="transform: translate(200px)">5</p>
-				<p style="transform: translate(240px)">6</p>
-				<p style="transform: translate(280px)">7</p>
-				<p style="transform: translate(320px)">8</p>
-				<p style="transform: translate(360px)">9</p>
-				<p style="transform: translate(400px)">10</p>
-				<p style="transform: translate(440px)">11</p>
-				<p style="transform: translate(480px)">12</p>
-				<p style="transform: translate(520px)">13</p>
-				<p style="transform: translate(560px)">14</p>
-				<p style="transform: translate(600px)">15</p>
-				<p style="transform: translate(640px)">16</p>
-				<p style="transform: translate(680px)">17</p>
-				<p style="transform: translate(720px)">18</p>
-				<p style="transform: translate(760px)">19</p>
-				<p style="transform: translate(800px)">20</p>
-				<p style="transform: translate(840px)">21</p>
-				<p style="transform: translate(880px)">22</p>
-				<p style="transform: translate(920px)">23</p>
-				<p style="transform: translate(960px)">24</p>
-				<p style="transform: translate(1000px)">25</p>
-				<p style="transform: translate(1040px)">26</p>
-				<p style="transform: translate(1080px)">27</p>
-				<p style="transform: translate(1120px)">28</p>
-				<p style="transform: translate(1160px)">29</p>
-				<p style="transform: translate(1200px)">30</p>
-				<p style="transform: translate(1240px)">31</p>
-				<p style="transform: translate(1280px)">32</p>
-				<p style="transform: translate(1320px)">33</p>
 			</div>
+
+			<div class="d-flex justify-content-center">
+				<button class="btn btn-success me-5 w-25" id="add-btn">
+					Thêm
+				</button>
+				<button class="btn btn-success me-5 w-25" id="insert-btn">
+					Chèn
+				</button>
+				<button class="btn btn-success me-5 w-25" id="edit-btn">
+					Sửa
+				</button>
+				<button class="btn btn-success me-5 w-25" id="delete-btn">
+					Xóa
+				</button>
+				<button class="btn btn-success me-5 w-25" id="search-btn">
+					Tìm kiếm
+				</button>
+				<button class="btn btn-success me-5 w-25" id="sort-btn">
+					Sắp xếp
+				</button>
+				<button class="btn btn-success me-5 w-25" id="max-btn">
+					Lớn nhất
+				</button>
+				<button class="btn btn-success me-5 w-25" id="min-btn">
+					Nhỏ nhất
+				</button>
+			</div>
+		</form>
+		<div class="notice h4"></div>
+		<div id="array"></div>
+		<div id="zz">
+			<p style="transform: translate(0px)">0</p>
+			<p style="transform: translate(40px)">1</p>
+			<p style="transform: translate(80px)">2</p>
+			<p style="transform: translate(120px)">3</p>
+			<p style="transform: translate(160px)">4</p>
+			<p style="transform: translate(200px)">5</p>
+			<p style="transform: translate(240px)">6</p>
+			<p style="transform: translate(280px)">7</p>
+			<p style="transform: translate(320px)">8</p>
+			<p style="transform: translate(360px)">9</p>
+			<p style="transform: translate(400px)">10</p>
+			<p style="transform: translate(440px)">11</p>
+			<p style="transform: translate(480px)">12</p>
+			<p style="transform: translate(520px)">13</p>
+			<p style="transform: translate(560px)">14</p>
+			<p style="transform: translate(600px)">15</p>
+			<p style="transform: translate(640px)">16</p>
+			<p style="transform: translate(680px)">17</p>
+			<p style="transform: translate(720px)">18</p>
+			<p style="transform: translate(760px)">19</p>
+			<p style="transform: translate(800px)">20</p>
+			<p style="transform: translate(840px)">21</p>
+			<p style="transform: translate(880px)">22</p>
+			<p style="transform: translate(920px)">23</p>
+			<p style="transform: translate(960px)">24</p>
+			<p style="transform: translate(1000px)">25</p>
+			<p style="transform: translate(1040px)">26</p>
+			<p style="transform: translate(1080px)">27</p>
+			<p style="transform: translate(1120px)">28</p>
+			<p style="transform: translate(1160px)">29</p>
+			<p style="transform: translate(1200px)">30</p>
+			<p style="transform: translate(1240px)">31</p>
+			<p style="transform: translate(1280px)">32</p>
+			<p style="transform: translate(1320px)">33</p>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>

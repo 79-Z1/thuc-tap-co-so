@@ -33,10 +33,6 @@ body {
 	overflow-x: auto;
 }
 
-/* #array::-webkit-scrollbar{
-    display: none;
-  } */
-
 .block {
 	width: 38px;
 	background-color: #6b5b95;
@@ -52,15 +48,6 @@ body {
 	width: 100%;
 	text-align: center;
 }
-
-/* .block p {
-	position: absolute;
-	color: black;
-	bottom: 0;
-	margin-bottom: -20px;
-	width: 100%;
-	text-align: center;
-} */
 
 .notice {
 	color: #fff;
